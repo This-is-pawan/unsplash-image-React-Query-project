@@ -1,10 +1,13 @@
 import React from 'react';
+import { useGlobalContext } from './context';
 
 const SearchForm = () => {
+  const {setSearchTheme}=useGlobalContext()
   const handleSubmit = (e) => {
     e.preventDefault();
-    const searchValue = e.target.elements.search.value.trim(); // Ensure we access 'search' correctly
+    const searchValue = e.target.elements.search.value;
     if (!searchValue) return;
+    setSearchTheme(searchValue)
     console.log(searchValue);
   };
 
@@ -16,7 +19,7 @@ const SearchForm = () => {
           type="text"
           className="form-input search"
           name="search"
-          placeholder="cat"
+          placeholder="dog"
         />
         <button className="btn" type="submit">
           Search
